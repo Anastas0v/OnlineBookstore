@@ -34,6 +34,9 @@ public class BookServiceImpl implements BookService
         return getBookRepository().save(book);
     }
 
+    /*
+     * creating new object with the data from the dto
+     */
     private Book createBookModel(BookDTO bookDTO)
     {
         Book book = new Book();
@@ -46,31 +49,21 @@ public class BookServiceImpl implements BookService
     }
 
     /*
-    *
     * making sure every input field that is necessary is present upon creating new entity
-    *
     */
     private void validateBookDTO(BookDTO bookDTO)
     {
         if (bookDTO == null)
-        {
             throw new BookException("BookDTO is null!");
-        }
 
         if (bookDTO.getTitle() == null || bookDTO.getTitle().isBlank())
-        {
             throw new BookException("Book title must not be null or blank!");
-        }
 
         if (bookDTO.getBasePrice() == null || bookDTO.getBasePrice() <= 0)
-        {
             throw new BookException("Book base price must be greater than zero!");
-        }
 
         if (bookDTO.getType() == null || bookDTO.getType().isBlank())
-        {
             throw new BookException("Book type must not be null or blank!");
-        }
     }
 
     @Override
@@ -79,8 +72,7 @@ public class BookServiceImpl implements BookService
         logger.info("Listing book with id {}", bookId);
         return getBookRepository()
                 .findById(bookId)
-                .orElseThrow(
-                        () -> new BookException(String.format("Book with id %s not found!", bookId)));
+                .orElseThrow(() -> new BookException(String.format("Book with id %s not found!", bookId)));
     }
 
     @Override
@@ -94,23 +86,23 @@ public class BookServiceImpl implements BookService
     public Book updateBook(Book book)
     {
         logger.info("Updating book with id {}", book.getId());
-        validateExistingBook(book);
+        validateNewBook(book);
 
-        Book databaseBook = getBookById(book.getId());
+        Book existingBook = getBookById(book.getId());
 
-        updateBookMetadata(book, databaseBook);
+        updateExistingBookData(book, existingBook);
 
-        return getBookRepository().save(databaseBook);
+        return getBookRepository().save(existingBook);
     }
 
-    private static void updateBookMetadata(Book book, Book databaseBook)
+    private void updateExistingBookData(Book book, Book existingBook)
     {
-        databaseBook.setTitle(book.getTitle());
-        databaseBook.setBasePrice(book.getBasePrice());
-        databaseBook.setType(book.getType());
+        existingBook.setTitle(book.getTitle());
+        existingBook.setBasePrice(book.getBasePrice());
+        existingBook.setType(book.getType());
     }
 
-    private void validateExistingBook(Book book)
+    private void validateNewBook(Book book)
     {
         if (book == null)
             throw new BookException("Book is null!");
@@ -126,9 +118,8 @@ public class BookServiceImpl implements BookService
     public void deleteBook(Long bookId)
     {
         if (!getBookRepository().existsById(bookId))
-        {
             throw new BookException(String.format("Book with id %s not found!", bookId));
-        }
+
         logger.info("Deleting book with id {}", bookId);
         getBookRepository().deleteById(bookId);
     }

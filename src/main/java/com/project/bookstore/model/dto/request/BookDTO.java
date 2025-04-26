@@ -9,6 +9,5 @@ public class BookDTO
 {
     private String title;
     private Double basePrice;
-    // handle in service layer later the enum and input string
     private String type;
 }
