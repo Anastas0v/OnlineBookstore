@@ -2,6 +2,7 @@ package com.project.bookstore.service;
 
 import com.project.bookstore.model.Customer;
 import com.project.bookstore.model.dto.request.CustomerDTO;
+import com.project.bookstore.model.dto.response.LoyaltyPointsDTO;
 
 import java.util.List;
 
@@ -19,4 +20,7 @@ public interface CustomerService
 
     //Delete
     void deleteCustomer(Long customerId);
+
+    //Get Loyalty Points For Customer
+    LoyaltyPointsDTO getLoyaltyPointsForCustomer(Long customerId);
 }

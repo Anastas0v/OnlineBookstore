@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class LoyaltyPoints
+public class LoyaltyPointsDTO
 {
     private Long customerId;
     private Integer loyaltyPoints;

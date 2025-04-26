@@ -2,6 +2,7 @@ package com.project.bookstore.service.impl;
 
 import com.project.bookstore.model.Customer;
 import com.project.bookstore.model.dto.request.CustomerDTO;
+import com.project.bookstore.model.dto.response.LoyaltyPointsDTO;
 import com.project.bookstore.model.exceptions.CustomerException;
 import com.project.bookstore.repository.CustomerRepository;
 import com.project.bookstore.service.CustomerService;
@@ -113,5 +114,12 @@ public class CustomerServiceImpl implements CustomerService
 
         logger.info("Deleting customer with id: {}", customerId);
         getCustomerRepository().deleteById(customerId);
+    }
+
+    @Override
+    public LoyaltyPointsDTO getLoyaltyPointsForCustomer(Long customerId)
+    {
+        Customer customer = getCustomerById(customerId);
+        return new LoyaltyPointsDTO(customerId, customer.getLoyalty());
     }
 }
