@@ -20,6 +20,9 @@ public class Customer
     @Column(nullable = false, name = "customer_name")
     private String name;
 
+    @Column(nullable = false, name = "customer_surname")
+    private String surname;
+
     @Column(name = "customer_loyaltyPoints")
     private Integer loyalty = 0;
 }

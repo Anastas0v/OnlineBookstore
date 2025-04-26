@@ -1,0 +1,22 @@
+package com.project.bookstore.service;
+
+import com.project.bookstore.model.Customer;
+import com.project.bookstore.model.dto.request.CustomerDTO;
+
+import java.util.List;
+
+public interface CustomerService
+{
+    //Create
+    Customer addCustomer(CustomerDTO customerDTO);
+
+    //Read
+    Customer getCustomerById(Long customerId);
+    List<Customer> getAllCustomers();
+
+    //Update
+    Customer updateCustomer(Customer customer);
+
+    //Delete
+    void deleteCustomer(Long customerId);
+}
