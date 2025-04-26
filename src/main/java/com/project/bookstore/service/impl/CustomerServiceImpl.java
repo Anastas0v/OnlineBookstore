@@ -6,7 +6,6 @@ import com.project.bookstore.model.dto.response.LoyaltyPointsDTO;
 import com.project.bookstore.model.exceptions.CustomerException;
 import com.project.bookstore.repository.CustomerRepository;
 import com.project.bookstore.service.CustomerService;
-import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@Getter
 public class CustomerServiceImpl implements CustomerService
 {
     private static final Logger logger = LoggerFactory.getLogger(CustomerServiceImpl.class);
@@ -76,12 +74,12 @@ public class CustomerServiceImpl implements CustomerService
     }
 
     @Override
-    public Customer updateCustomer(Customer customer)
+    public Customer updateCustomer(Customer customer, Long customerId)
     {
-        logger.info("Updating customer with id: {}", customer.getId());
-        validateNewCustomer(customer);
+        logger.info("Updating customer with id: {}", customerId);
+        validateNewCustomer(customer, customerId);
 
-        Customer existingCustomer = getCustomerById(customer.getId());
+        Customer existingCustomer = getCustomerById(customerId);
 
         updateExistingCustomerData(customer, existingCustomer);
 
@@ -92,14 +90,15 @@ public class CustomerServiceImpl implements CustomerService
     {
         existingCustomer.setName(customer.getName());
         existingCustomer.setSurname(customer.getSurname());
+        existingCustomer.setLoyalty(customer.getLoyalty());
     }
 
-    private void validateNewCustomer(Customer customer)
+    private void validateNewCustomer(Customer customer, Long customerId)
     {
         if (customer == null)
             throw new CustomerException("Customer cannot be null");
 
-        if (customer.getId() == null)
+        if (customer.getId() == null || customerId == null)
             throw new CustomerException("Customer id cannot be null");
 
         if (!getCustomerRepository().existsById(customer.getId()))
@@ -120,6 +119,13 @@ public class CustomerServiceImpl implements CustomerService
     public LoyaltyPointsDTO getLoyaltyPointsForCustomer(Long customerId)
     {
         Customer customer = getCustomerById(customerId);
+
+        logger.info("Retrieving loyalty points for customer with id {}", customerId);
         return new LoyaltyPointsDTO(customerId, customer.getLoyalty());
+    }
+
+    public CustomerRepository getCustomerRepository()
+    {
+        return customerRepository;
     }
 }

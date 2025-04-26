@@ -6,7 +6,6 @@ import com.project.bookstore.model.eum.BookType;
 import com.project.bookstore.model.exceptions.BookException;
 import com.project.bookstore.repository.BookRepository;
 import com.project.bookstore.service.BookService;
-import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@Getter
 public class BookServiceImpl implements BookService
 {
     private static final Logger logger = LoggerFactory.getLogger(BookServiceImpl.class);
@@ -122,5 +120,10 @@ public class BookServiceImpl implements BookService
 
         logger.info("Deleting book with id {}", bookId);
         getBookRepository().deleteById(bookId);
+    }
+
+    public BookRepository getBookRepository()
+    {
+        return bookRepository;
     }
 }

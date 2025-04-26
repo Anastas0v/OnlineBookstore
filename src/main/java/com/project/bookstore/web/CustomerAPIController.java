@@ -4,14 +4,12 @@ import com.project.bookstore.model.Customer;
 import com.project.bookstore.model.dto.request.CustomerDTO;
 import com.project.bookstore.model.dto.response.LoyaltyPointsDTO;
 import com.project.bookstore.service.CustomerService;
-import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Getter
 @RestController
 @RequestMapping("/customer")
 public class CustomerAPIController
@@ -40,10 +38,10 @@ public class CustomerAPIController
         return ResponseEntity.ok(createdCustomer);
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer)
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer, @PathVariable Long id)
     {
-        Customer updatedCustomer = getCustomerService().updateCustomer(customer);
+        Customer updatedCustomer = getCustomerService().updateCustomer(customer, id);
         return ResponseEntity.ok(updatedCustomer);
     }
 
@@ -59,5 +57,10 @@ public class CustomerAPIController
     {
         LoyaltyPointsDTO loyaltyPointsDTO = getCustomerService().getLoyaltyPointsForCustomer(id);
         return ResponseEntity.ok(loyaltyPointsDTO);
+    }
+
+    public CustomerService getCustomerService()
+    {
+        return customerService;
     }
 }

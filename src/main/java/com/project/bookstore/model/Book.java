@@ -8,12 +8,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Column;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
 public class Book
 {
     @Id
@@ -28,4 +24,44 @@ public class Book
 
     @Enumerated(EnumType.STRING)
     private BookType type;
+
+    public Long getId()
+    {
+        return id;
+    }
+
+    public void setId(Long id)
+    {
+        this.id = id;
+    }
+
+    public String getTitle()
+    {
+        return title;
+    }
+
+    public void setTitle(String title)
+    {
+        this.title = title;
+    }
+
+    public double getBasePrice()
+    {
+        return basePrice;
+    }
+
+    public void setBasePrice(double basePrice)
+    {
+        this.basePrice = basePrice;
+    }
+
+    public BookType getType()
+    {
+        return type;
+    }
+
+    public void setType(BookType type)
+    {
+        this.type = type;
+    }
 }

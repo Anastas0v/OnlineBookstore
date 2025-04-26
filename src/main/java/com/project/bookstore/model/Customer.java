@@ -5,12 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Column;
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
 public class Customer
 {
     @Id
@@ -25,4 +21,44 @@ public class Customer
 
     @Column(name = "customer_loyaltyPoints")
     private Integer loyalty = 0;
+
+    public Long getId()
+    {
+        return id;
+    }
+
+    public void setId(Long id)
+    {
+        this.id = id;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public String getSurname()
+    {
+        return surname;
+    }
+
+    public void setSurname(String surname)
+    {
+        this.surname = surname;
+    }
+
+    public Integer getLoyalty()
+    {
+        return loyalty;
+    }
+
+    public void setLoyalty(Integer loyalty)
+    {
+        this.loyalty = loyalty;
+    }
 }
