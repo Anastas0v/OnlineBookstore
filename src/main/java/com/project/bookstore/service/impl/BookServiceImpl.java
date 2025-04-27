@@ -81,12 +81,12 @@ public class BookServiceImpl implements BookService
     }
 
     @Override
-    public Book updateBook(Book book)
+    public Book updateBook(Book book, Long bookId)
     {
-        logger.info("Updating book with id {}", book.getId());
-        validateNewBook(book);
+        logger.info("Updating book with id {}", bookId);
+        validateNewBook(book, bookId);
 
-        Book existingBook = getBookById(book.getId());
+        Book existingBook = getBookById(bookId);
 
         updateExistingBookData(book, existingBook);
 
@@ -100,12 +100,12 @@ public class BookServiceImpl implements BookService
         existingBook.setType(book.getType());
     }
 
-    private void validateNewBook(Book book)
+    private void validateNewBook(Book book, Long bookId)
     {
         if (book == null)
             throw new BookException("Book is null!");
 
-        if (book.getId() == null)
+        if (book.getId() == null || bookId == null)
             throw new BookException("Book id is null!");
 
         if (!getBookRepository().existsById(book.getId()))
