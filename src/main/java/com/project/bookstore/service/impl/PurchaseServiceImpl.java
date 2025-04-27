@@ -44,7 +44,7 @@ public class PurchaseServiceImpl implements PurchaseService
 
         customerService.updateCustomer(customer, customer.getId());
 
-        return new ResponsePurchaseDTO(totalPrice, pointsUsed, pointsEarned);
+        return new ResponsePurchaseDTO(totalPrice, pointsEarned, pointsUsed);
     }
 
     private static Integer getUsedPoints(Integer initialPoints, Customer customer)
