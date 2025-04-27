@@ -6,6 +6,7 @@ public class RequestPurchaseDTO
 {
     private Long customerId;
     private List<Long> bookIdList;
+    private boolean useLoyaltyPoints;
 
     public Long getCustomerId()
     {
@@ -25,5 +26,15 @@ public class RequestPurchaseDTO
     public void setBookIdList(List<Long> bookIdList)
     {
         this.bookIdList = bookIdList;
+    }
+
+    public boolean isUseLoyaltyPoints()
+    {
+        return useLoyaltyPoints;
+    }
+
+    public void setUseLoyaltyPoints(boolean useLoyaltyPoints)
+    {
+        this.useLoyaltyPoints = useLoyaltyPoints;
     }
 }
