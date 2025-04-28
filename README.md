@@ -64,6 +64,8 @@ It allows me to build and deliver clean, scalable, and robust applications. The 
     - Service layer validation and CRUD operations
 - Ensures business rules are properly enforced.
 
+- Run tests with: `mvn test`;
+
 ---
 
 ## Key Assumptions
@@ -86,5 +88,21 @@ It allows me to build and deliver clean, scalable, and robust applications. The 
 
 ---
 
-### How to Run
+## How to Run
+
+- **Clone the Repository:** `git clone https://github.com/Anastas0v/OnlineBookstore.git`
+- **Install Maven on your machine and install all dependencies.**
+- **Run the application using the command** `mvn spring-boot:run`
+- **Application will be available on** `http://localhost:8080`
+
+### Database Control
+
+- If you need to interact with the in-memory H2 databse:
+  - URL: `http://localhost:8080/h2-console`
+  - JDBC URL: `jdbc:h2:mem:bookstore`
+  - Username: `admin`
+  - Password: `password`
+
+
+## API Endpoints
 
