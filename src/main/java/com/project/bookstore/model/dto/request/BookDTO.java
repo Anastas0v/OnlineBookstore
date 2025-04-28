@@ -6,6 +6,13 @@ public class BookDTO
     private Double basePrice;
     private String type;
 
+    public BookDTO(String title, Double basePrice, String type)
+    {
+        this.title = title;
+        this.basePrice = basePrice;
+        this.type = type;
+    }
+
     public String getTitle()
     {
         return title;

@@ -5,6 +5,12 @@ public class CustomerDTO
     private String customerName;
     private String customerSurname;
 
+    public CustomerDTO(String customerName, String customerSurname)
+    {
+        this.customerName = customerName;
+        this.customerSurname = customerSurname;
+    }
+
     public String getCustomerName()
     {
         return customerName;
