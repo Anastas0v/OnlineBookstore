@@ -5,6 +5,17 @@ import com.project.bookstore.model.dto.request.BookDTO;
 
 import java.util.List;
 
+/**
+ * Service interface for managing book operations, including CRUD functionality.
+ *
+ * <p>Operations provided:
+ * <ul>
+ *   <li>Create a new book</li>
+ *   <li>Retrieve a book by its ID or list all books</li>
+ *   <li>Update an existing book's details</li>
+ *   <li>Delete a book by its ID</li>
+ * </ul>
+ */
 public interface BookService
 {
     //Create
