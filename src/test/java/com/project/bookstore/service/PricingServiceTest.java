@@ -3,7 +3,6 @@ import com.project.bookstore.model.Book;
 import com.project.bookstore.model.Customer;
 import com.project.bookstore.model.dto.request.BookDTO;
 import com.project.bookstore.model.dto.request.CustomerDTO;
-import com.project.bookstore.model.eum.BookType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
