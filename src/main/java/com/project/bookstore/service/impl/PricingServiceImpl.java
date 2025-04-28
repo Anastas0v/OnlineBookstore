@@ -47,7 +47,6 @@ public class PricingServiceImpl implements PricingService
 
             // check if user can use loyalty points and if he wants to spend it
             // if user has more or equal 10 points, can have old release or regular for free
-
             if (canHaveBookForFree && !appliedFreeBook && book.getType() != BookType.NEW_RELEASE)
             {
                 // set book price to 0 (free)
