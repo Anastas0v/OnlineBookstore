@@ -105,4 +105,39 @@ It allows me to build and deliver clean, scalable, and robust applications. The 
 
 
 ## API Endpoints
+### Book API
 
+**Save New Book:**
+- *Endpoint*: `POST /book/save`
+- *Request Body*:
+```json
+{
+    "title": "Book Title",
+    "basePrice": 20.0,
+    "type": "regular"
+} 
+```
+
+**Get All Books And Book By ID:**
+- *Endpoint*: `GET /book`
+  - Returns a list of all saved books with details such as title, base price, and type.
+- *Endpoint*: `GET /book/all`
+  - Returns a list of all saved books with details such as title, base price, and type.
+- *Endpoint*: `GET /book/{id}`
+  - Returns the details of the book, including its title, base price, and type.
+
+**Update Existing Book:**
+- *Endpoint*: `PUT /book/update/{id}`
+- *Request Body*:
+```json
+{
+  "id": "{id}",
+  "title": "Book Title - UPDATED",
+  "basePrice": 13.99,
+  "type": "OLD_EDITION"
+}
+```
+
+**Delete Existing Book:**
+- *Endpoint*: `DELETE /book/{id}`
+  - Deletes a book based on the provided book ID.
