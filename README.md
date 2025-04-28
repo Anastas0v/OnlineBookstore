@@ -106,10 +106,10 @@ It allows me to build and deliver clean, scalable, and robust applications. The 
 ---
 
 ## API Endpoints
-### Book API
+### Book API `/book`
 
 **Save New Book:**
-- *Endpoint*: `POST /book/save`
+- *Endpoint*: `POST /save`
 - *Request Body*:
 ```json
 {
@@ -120,15 +120,15 @@ It allows me to build and deliver clean, scalable, and robust applications. The 
 ```
 
 **Get All Books And Get Book By ID:**
-- *Endpoint*: `GET /book`
+- *Endpoint*: `GET /`
   - Returns a list of all saved books with details such as title, base price, and type.
-- *Endpoint*: `GET /book/all`
+- *Endpoint*: `GET /all`
   - Returns a list of all saved books with details such as title, base price, and type.
-- *Endpoint*: `GET /book/{id}`
+- *Endpoint*: `GET /{id}`
   - Returns the details of the book, including its title, base price, and type.
 
 **Update Existing Book:**
-- *Endpoint*: `PUT /book/update/{id}`
+- *Endpoint*: `PUT /update/{id}`
 - *Request Body*:
 ```json
 {
@@ -140,15 +140,15 @@ It allows me to build and deliver clean, scalable, and robust applications. The 
 ```
 
 **Delete Existing Book:**
-- *Endpoint*: `DELETE /book/{id}`
+- *Endpoint*: `DELETE /{id}`
   - Deletes a book based on the provided book ID.
 
 ---
 
-### Customer API
+### Customer API `/customer`
 
 **Save New Customer:**
-- *Endpoint*: `POST /customer/save`
+- *Endpoint*: `POST /save`
 - *Request Body*:
 ```json
 {
@@ -158,15 +158,15 @@ It allows me to build and deliver clean, scalable, and robust applications. The 
 ```
 
 **Get All Customers And Get Customer By ID:**
-- *Endpoint*: `GET /customer`
+- *Endpoint*: `GET /`
     - Returns a list of all saved customers with details such as name, surname and loyalty points.
-- *Endpoint*: `GET /customer/all`
+- *Endpoint*: `GET /all`
     - Returns a list of all saved customers with details such as name, surname and loyalty points.
-- *Endpoint*: `GET /customer/{id}`
+- *Endpoint*: `GET /{id}`
     - Returns the details of the customer, including its name, surname and loyalty points.
 
 **Update Existing Customer:**
-- *Endpoint*: `PUT /customer/update/{id}`
+- *Endpoint*: `PUT /update/{id}`
 - *Request Body*:
 ```json
 {
@@ -178,9 +178,24 @@ It allows me to build and deliver clean, scalable, and robust applications. The 
 ```
 
 **Delete Existing Customer:**
-- *Endpoint*: `DELETE /customer/{id}`
+- *Endpoint*: `DELETE /{id}`
     - Deletes a customer based on the provided book ID.
 
 **Get Loyalty Points For Customer:**
 - *Endpoint*: `GET /{id}/loyalty-points`
   - Returns the loyalty point for customer based on the provided customer ID.
+
+---
+
+### Purchase API `/purchase`
+
+**Process Purchase:**
+- *Endpoint*: `POST /`
+- *Request Body*:
+```json
+{
+  "customerId": "{id}",
+  "bookIdList": "[{id}, {id}...]",
+  "useLoyaltyPoints": "true/false"
+}
+```
