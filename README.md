@@ -103,6 +103,7 @@ It allows me to build and deliver clean, scalable, and robust applications. The 
   - Username: `admin`
   - Password: `password`
 
+---
 
 ## API Endpoints
 ### Book API
@@ -118,7 +119,7 @@ It allows me to build and deliver clean, scalable, and robust applications. The 
 } 
 ```
 
-**Get All Books And Book By ID:**
+**Get All Books And Get Book By ID:**
 - *Endpoint*: `GET /book`
   - Returns a list of all saved books with details such as title, base price, and type.
 - *Endpoint*: `GET /book/all`
@@ -141,3 +142,45 @@ It allows me to build and deliver clean, scalable, and robust applications. The 
 **Delete Existing Book:**
 - *Endpoint*: `DELETE /book/{id}`
   - Deletes a book based on the provided book ID.
+
+---
+
+### Customer API
+
+**Save New Customer:**
+- *Endpoint*: `POST /customer/save`
+- *Request Body*:
+```json
+{
+    "customerName": "John",
+    "customerSurname": "Doe"
+} 
+```
+
+**Get All Customers And Get Customer By ID:**
+- *Endpoint*: `GET /customer`
+    - Returns a list of all saved customers with details such as name, surname and loyalty points.
+- *Endpoint*: `GET /customer/all`
+    - Returns a list of all saved customers with details such as name, surname and loyalty points.
+- *Endpoint*: `GET /customer/{id}`
+    - Returns the details of the customer, including its name, surname and loyalty points.
+
+**Update Existing Customer:**
+- *Endpoint*: `PUT /customer/update/{id}`
+- *Request Body*:
+```json
+{
+  "id": "{id}",
+  "name": "John",
+  "surname": "Smith",
+  "loyalty": 10
+}
+```
+
+**Delete Existing Customer:**
+- *Endpoint*: `DELETE /customer/{id}`
+    - Deletes a customer based on the provided book ID.
+
+**Get Loyalty Points For Customer:**
+- *Endpoint*: `GET /{id}/loyalty-points`
+  - Returns the loyalty point for customer based on the provided customer ID.
