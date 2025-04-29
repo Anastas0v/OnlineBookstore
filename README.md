@@ -22,6 +22,9 @@ It allows me to build and deliver clean, scalable, and robust applications. The 
 
 - **H2 Database**  
   Perfect for simple, fast in-memory storage during development.
+  
+- **Lombok**
+  !!! Lombok not being used due to local machine issues !!!
 
 ---
 
